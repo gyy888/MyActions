@@ -18,7 +18,7 @@ async function downFile() {
 async function changeFiele() {
     let content = await fs.readFileSync("./lxk0301.js", "utf8");
     content = content.replace("require('./jdCookie.js')", JSON.stringify(CookieJDs));
-    await fs.writeFileSync("lxk0301.js", content, "utf8");
+    await fs.writeFileSync("./lxk0301.js", content, "utf8");
 }
 
 async function start() {
