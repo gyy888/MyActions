@@ -12,11 +12,11 @@ const SyncUrl = process.env.SYNCURL; //签到地址,方便随时变动
 let CookieJDs = [];
 
 async function downFile() {
-    await download(SyncUrl, "./");
+    await download(SyncUrl, "./temp.js");
 }
 
 async function changeFiele() {
-    let content = await fs.readFileSync("./lxk0301.js", "utf8");
+    let content = await fs.readFileSync("./temp.js", "utf8");
     content = content.replace("require('./jdCookie.js')", JSON.stringify(CookieJDs));
     await fs.writeFileSync("./lxk0301.js", content, "utf8");
 }
