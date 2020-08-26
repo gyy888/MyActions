@@ -8,7 +8,7 @@ const download = require("download");
 
 // 公共变量
 const JD_COOKIE = process.env.JD_COOKIE; //cokie,多个用&隔开即可
-const SyncUrl = process.env.SYNCURL; //签到地址,方便随时变动
+let SyncUrl = process.env.SYNCURL; //签到地址,方便随时变动
 let CookieJDs = [];
 
 async function downFile() {
