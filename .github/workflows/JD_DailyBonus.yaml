@@ -1,4 +1,4 @@
-name: Github JD_DailyBonus bot
+name: Job_JDDailyBonus
 
 on:
     push:
