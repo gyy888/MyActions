@@ -4,9 +4,9 @@
 name: jd_blueCoin
 
 on:
-    push:
-        branches:
-            - master
+    # push:
+    #     branches:
+    #         - master
     schedule:
         - cron: "10 17 * * *"
 

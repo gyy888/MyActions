@@ -12,16 +12,16 @@ const SyncUrl = process.env.SYNCURL; //签到地址,方便随时变动
 let CookieJDs = [];
 
 async function downFile() {
-    await download(SyncUrl, "./");
+    await download(SyncUrl, "./",{filename:'temp.js'});
 }
 
 async function changeFiele(content, cookie) {
     let newContent = content.replace("require('./jdCookie.js')", JSON.stringify({ CookieJD: cookie }));
-    await fs.writeFileSync("lxk0301_old.js", newContent, "utf8");
+    await fs.writeFileSync("./lxk0301_old.js", newContent, "utf8");
 }
 
 async function executeOneByOne() {
-    const content = await fs.readFileSync("./lxk0301_old.js", "utf8");
+    const content = await fs.readFileSync("./temp.js", "utf8");
     for (var i = 0; i < CookieJDs.length; i++) {
         console.log(`正在执行第${i + 1}个账号签到任务`);
         changeFiele(content, CookieJDs[i]);
