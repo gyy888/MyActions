@@ -30,7 +30,7 @@ async function executeOneByOne() {
 async function changeFiele(cookieKey) {
     let content = await fs.readFileSync("./JD_DailyBonus.js", "utf8");
     content = content.replace(/var Key = ''/, `var Key = '${cookieKey}'`);
-    await fs.writeFileSync("./JD_DailyBonus_sign.js", content, "utf8");
+    await fs.writeFileSync("JD_DailyBonus_sign.js", content, "utf8");
 }
 
 async function start() {
@@ -39,7 +39,7 @@ async function start() {
         return;
     }
     CookieJDs = JD_COOKIE.split("&");
-    console.log(`当前共${CookieJDs}个账号需要签到`);
+    console.log(`当前共${CookieJDs.length}个账号需要签到`);
     // 下载最新代码
     await downFile();
     console.log("下载代码完毕");
