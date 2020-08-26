@@ -19,18 +19,18 @@ async function downFile() {
 }
 
 async function executeOneByOne() {
+    const content = await fs.readFileSync("./JD_DailyBonus.js", "utf8");
     for (var i = 0; i < CookieJDs.length; i++) {
         console.log(`正在执行第${i + 1}个账号签到任务`);
-        changeFiele(CookieJDs[i]);
+        changeFiele(content, CookieJDs[i]);
         console.log("替换变量完毕");
-        await exec("node JD_DailyBonus_sign.js", { stdio: "inherit" });
+        await exec("node JD_DailyBonus.js", { stdio: "inherit" });
         console.log("执行完毕");
     }
 }
-async function changeFiele(cookieKey) {
-    let content = await fs.readFileSync("./JD_DailyBonus.js", "utf8");
-    content = content.replace(/var Key = ''/, `var Key = '${cookieKey}'`);
-    await fs.writeFileSync("JD_DailyBonus_sign.js", content, "utf8");
+async function changeFiele(content, cookieKey) {
+    let newContent = content.replace(/var Key = ''/, `var Key = '${cookieKey}'`);
+    await fs.writeFileSync("./JD_DailyBonus.js", newContent, "utf8");
 }
 
 async function start() {
