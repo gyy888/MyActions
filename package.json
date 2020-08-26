@@ -1,0 +1,22 @@
+{
+  "name": "myactions",
+  "version": "1.0.0",
+  "description": "sign everything",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sazn1314/MyActions.git"
+  },
+  "keywords": [
+    "sign"
+  ],
+  "author": "sazs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sazn1314/MyActions/issues"
+  },
+  "homepage": "https://github.com/sazn1314/MyActions#readme"
+}
