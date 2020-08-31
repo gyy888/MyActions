@@ -26,6 +26,6 @@ jobs:
         node lkx0301.js
       env:
         JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
-          SYNCURL: https://github.com/lxk0301/scripts/raw/master/jd_joy_steal.js
+        PUSH_KEY: ${{ secrets.PUSH_KEY }}
+        BARK_PUSH: ${{ secrets.BARK_PUSH }}
+        SYNCURL: https://github.com/lxk0301/scripts/raw/master/jd_joy_steal.js
