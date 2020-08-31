@@ -1,7 +1,3 @@
-// version v0.0.1
-// create by ruicky
-// detail url: https://github.com/ruicky/jd_sign_bot
-
 const exec = require("child_process").execSync;
 const fs = require("fs");
 const download = require("download");
@@ -19,24 +15,30 @@ let CookieJDs = [];
 
 async function downFile() {
     await download(SyncUrl, "./", { filename: "temp.js" });
-}
-
-async function downNotifyFile() {
-    await download("https://github.com/lxk0301/scripts/raw/master/sendNotify.js", "./", { filename: "sendNotify.js" });
-}
-
-async function downFruitShareCodesFile() {
-    await download("https://github.com/lxk0301/scripts/raw/master/jdFruitShareCodes.js", "./", { filename: "jdFruitShareCodes.js" });
+    console.log("下载代码完毕");
+    if (PUSH_KEY || BARK_KEY) {
+        await download("https://github.com/lxk0301/scripts/raw/master/sendNotify.js", "./", { filename: "sendNotify.js" });
+        console.log("下载通知代码完毕");
+    }
+    if (FruitShareCodes) {
+        await download("https://github.com/lxk0301/scripts/raw/master/jdFruitShareCodes.js", "./", { filename: "jdFruitShareCodes.js" });
+        console.log("下载农场分享码代码完毕");
+    }
 }
 
 async function changeFiele() {
     let content = await fs.readFileSync("./temp.js", "utf8");
+    
     content = content.replace("require('./jdCookie.js')", JSON.stringify(CookieJDs));
+    
     if (!PUSH_KEY && !BARK_KEY) content = content.replace("require('./sendNotify')", "''");
+    
     if (JDMarketCoinToBeans &&!isNaN(JDMarketCoinToBeans)&& parseInt(JDMarketCoinToBeans) <= 20 && parseInt(JDMarketCoinToBeans) >= 0) content = content.replace("$.getdata('coinToBeans')", JDMarketCoinToBeans);
+    
     if (JDJoyFeedCount && !isNaN(JDJoyFeedCount) && [10, 20, 40, 80].indexOf(parseInt(JDJoyFeedCount) >= 0)) content = content.replace("$.getdata('joyFeedCount')", JDJoyFeedCount);
 
     await fs.writeFileSync("./lxk0301.js", content, "utf8");
+    console.log("替换变量完毕");
 }
 
 async function start() {
@@ -52,17 +54,7 @@ async function start() {
     console.log(`当前共${CookieJDs.length}个账号需要签到`);
     // 下载最新代码
     await downFile();
-    console.log("下载代码完毕");
-    if (PUSH_KEY || BARK_KEY) {
-        await downNotifyFile();
-        console.log("下载通知代码完毕");
-    }
-    if (FruitShareCodes) {
-        await downFruitShareCodesFile();
-        console.log("下载农场分享码代码完毕");
-    }
     await changeFiele();
-    console.log("替换变量完毕");
     try {
         await exec("node lxk0301.js", { stdio: "inherit" });
     } catch (e) {
