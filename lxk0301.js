@@ -5,6 +5,7 @@
 const exec = require("child_process").execSync;
 const fs = require("fs");
 const download = require("download");
+const { parse } = require("path");
 
 // 公共变量
 const JD_COOKIE = process.env.JD_COOKIE; //cokie,多个用&隔开即可
@@ -27,10 +28,10 @@ async function changeFiele() {
     if (!PUSH_KEY) {
         content = content.replace("require('./sendNotify')", "''");
     }
-    if (!JDMarketCoinToBeans && JDMarketCoinToBeans <= 20 && JDMarketCoinToBeans >= 0) {
+    if (JDMarketCoinToBeans &&!isNaN(JDMarketCoinToBeans)&& parseInt(JDMarketCoinToBeans) <= 20 && parseInt(JDMarketCoinToBeans) >= 0) {
         content = content.replace("$.getdata('coinToBeans')", JDMarketCoinToBeans);
     }
-    if (!JDJoyFeedCount && !isNaN(JDJoyFeedCount) && [10, 20, 40, 80].indexOf(parseInt(JDJoyFeedCount) >= 0)) {
+    if (JDJoyFeedCount && !isNaN(JDJoyFeedCount) && [10, 20, 40, 80].indexOf(parseInt(JDJoyFeedCount) >= 0)) {
         content = content.replace("$.getdata('joyFeedCount')", JDJoyFeedCount);
     }
 
