@@ -67,7 +67,7 @@ async function start() {
         console.log("请填写 SYNCURL 后在继续");
         return;
     }
-    CookieJDs = JD_COOKIE.split("&");
+    CookieJDs = Secrets.JD_COOKIE.split("&");
     console.log(Secrets);
     console.log(`当前共${CookieJDs.length}个账号需要签到`);
     try {
