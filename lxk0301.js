@@ -8,7 +8,7 @@ const Secrets = {
     JD_COOKIE: process.env.JD_COOKIE, //cokie,多个用&隔开即可
     SyncUrl: process.env.SYNCURL, //签到地址,方便随时变动
     PUSH_KEY: process.env.PUSH_KEY, //server酱推送消息
-    BARK_KEY: process.env.BARK_KEY, //Bark推送
+    BARK_PUSH: process.env.BARK_PUSH, //Bark推送
     MarketCoinToBeanCount: process.env.JDMarketCoinToBeans, //京小超蓝币兑换京豆数量
     JoyFeedCount: process.env.JDJoyFeedCount, //宠汪汪喂食数量
     FruitShareCodes: process.env.FruitShareCodes, //京东农场分享码
@@ -18,7 +18,7 @@ let CookieJDs = [];
 async function downFile() {
     await download(Secrets.SyncUrl, "./", { filename: "temp.js" });
     console.log("下载代码完毕");
-    if (Secrets.PUSH_KEY || Secrets.BARK_KEY) {
+    if (Secrets.PUSH_KEY || Secrets.BARK_PUSH) {
         await download("https://github.com/lxk0301/scripts/raw/master/sendNotify.js", "./", {
             filename: "sendNotify.js",
         });
@@ -37,7 +37,7 @@ async function changeFiele() {
 
     content = content.replace("require('./jdCookie.js')", JSON.stringify(CookieJDs));
 
-    if (!Secrets.PUSH_KEY && !Secrets.BARK_KEY) content = content.replace("require('./sendNotify')", "''");
+    if (!Secrets.PUSH_KEY && !Secrets.BARK_PUSH) content = content.replace("require('./sendNotify')", "''");
 
     if (
         Secrets.MarketCoinToBeanCount &&
@@ -68,8 +68,8 @@ async function start() {
         return;
     }
     CookieJDs = Secrets.JD_COOKIE.split("&");
-    console.log(Secrets);
-    console.log(`当前共${CookieJDs.length}个账号需要签到`);
+    console.log(JSON.stringify(Secrets),`MarketCoinToBeanCount:${Secrets.MarketCoinToBeanCount}`);
+    console.log(`当前共${CookieJDs.length}个账号需要签到`,CookieJDs);
     try {
         await downFile();
         await changeFiele();
