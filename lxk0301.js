@@ -44,15 +44,23 @@ async function changeFiele() {
         !isNaN(Secrets.MarketCoinToBeanCount) &&
         parseInt(Secrets.MarketCoinToBeanCount) <= 20 &&
         parseInt(Secrets.MarketCoinToBeanCount) >= 0
-    )
-        content = content.replace("$.getdata('coinToBeans')", Secrets.MarketCoinToBeanCount);
+    ) {
+        if (content.indexOf("$.getdata('coinToBeans')") > 0) {
+            console.log("蓝币兑换京豆操作已注入");
+            content = content.replace("$.getdata('coinToBeans')", parseInt(Secrets.MarketCoinToBeanCount));
+        }
+    }
 
     if (
         Secrets.JoyFeedCount &&
         !isNaN(Secrets.JoyFeedCount) &&
         [10, 20, 40, 80].indexOf(parseInt(Secrets.JoyFeedCount) >= 0)
-    )
-        content = content.replace("$.getdata('joyFeedCount')", Secrets.JoyFeedCount);
+    ) {
+        if (content.indexOf("$.getdata('joyFeedCount')") > 0) {
+            console.log("宠汪汪喂食操作已注入");
+            content = content.replace("$.getdata('joyFeedCount')", parseInt(Secrets.JoyFeedCount));
+        }
+    }
 
     await fs.writeFileSync("./lxk0301.js", content, "utf8");
     console.log("替换变量完毕");
@@ -68,9 +76,6 @@ async function start() {
         return;
     }
     CookieJDs = Secrets.JD_COOKIE.split("&");
-    console.log(
-        `JoyFeedCount:${Secrets.JoyFeedCount+.01},JoyFeedCount:${Secrets.JoyFeedCount}`
-    );
     console.log(`当前共${CookieJDs.length}个账号需要签到`);
     try {
         await downFile();
