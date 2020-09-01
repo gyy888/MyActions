@@ -68,8 +68,10 @@ async function start() {
         return;
     }
     CookieJDs = Secrets.JD_COOKIE.split("&");
-    console.log(JSON.stringify(Secrets),`MarketCoinToBeanCount:${Secrets.MarketCoinToBeanCount}`);
-    console.log(`当前共${CookieJDs.length}个账号需要签到`,CookieJDs);
+    console.log(
+        `JoyFeedCount:${Secrets.JoyFeedCount+.01},JoyFeedCount:${Secrets.JoyFeedCount}`
+    );
+    console.log(`当前共${CookieJDs.length}个账号需要签到`);
     try {
         await downFile();
         await changeFiele();
