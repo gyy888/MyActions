@@ -40,7 +40,7 @@ async function changeFiele() {
 }
 
 async function start() {
-    console.log(`当前执行时间:${new Date().toISOString().replace("T", " ").replace("Z", "")}`);
+    console.log(`当前执行时间:${new Date().toString()}`);
     if (!Secrets.JD_COOKIE) {
         console.log("请填写 JD_COOKIE 后在继续");
         return;

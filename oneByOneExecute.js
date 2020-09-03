@@ -33,6 +33,7 @@ async function executeOneByOne() {
 }
 
 async function start() {
+    console.log(`当前执行时间:${new Date().toString()}`);
     if (!JD_COOKIE) {
         console.log("请填写 JD_COOKIE 后在继续");
         return;
