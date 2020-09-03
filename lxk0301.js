@@ -1,7 +1,7 @@
 const exec = require("child_process").execSync;
 const fs = require("fs");
 const download = require("download");
-import { replaceWithSecrets } from "smartReplace.js";
+import { replaceWithSecrets } from "./smartReplace.js";
 
 // 公共变量
 const Secrets = {
