@@ -29,3 +29,7 @@ function batchReplace(content) {
     }
     return content;
 }
+
+module.exports = {
+    replaceWithSecrets
+  }
