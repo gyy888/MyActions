@@ -21,9 +21,9 @@ function replaceWithSecrets(content, Secrets) {
             replacements.push({ key: "$.getdata('joyFeedCount')", value: feedCount });
         }
     }
-    return batchReplace(content);
+    return batchReplace(content, replacements);
 }
-function batchReplace(content) {
+function batchReplace(content, replacements) {
     for (var i = 0; i < replacements.length; i++) {
         content = content.replace(replacements[i].key, replacements[i].value);
     }
@@ -31,5 +31,5 @@ function batchReplace(content) {
 }
 
 module.exports = {
-    replaceWithSecrets
-  }
+    replaceWithSecrets,
+};
