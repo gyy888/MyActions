@@ -1,7 +1,7 @@
 const exec = require("child_process").execSync;
 const fs = require("fs");
 const download = require("download");
-const smartReplace = require("smartReplace");
+import { replaceWithSecrets } from "smartReplace";
 
 // 公共变量
 const Secrets = {
@@ -34,7 +34,7 @@ async function downFile() {
 
 async function changeFiele() {
     let content = await fs.readFileSync("./temp.js", "utf8");
-    content = smartReplace.replaceWithSecrets(content, Secrets);
+    content = replaceWithSecrets(content, Secrets);
     await fs.writeFileSync("./lxk0301.js", content, "utf8");
     console.log("替换变量完毕");
 }
