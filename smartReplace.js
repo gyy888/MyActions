@@ -4,7 +4,7 @@ function replaceWithSecrets(content, Secrets) {
     //此处为字符串,说明是传入指定cookie信息了,仅替换cookie即可,其它的不需要替换
     if (typeof Secrets == "string") {
         if (content.indexOf("require('./jdCookie.js')") > 0) {
-            replacements.push({ key: "require('./jdCookie.js')", value: `'${Secrets}'` });
+            replacements.push({ key: "require('./jdCookie.js')", value: `{CookieJD:'${Secrets}'}` });
         }
         if (content.indexOf("京东多合一签到") > 0 && content.indexOf("@NobyDa") > 0) {
             replacements.push({ key: /var Key = ''/, value: `var Key = '${Secrets}'` });
