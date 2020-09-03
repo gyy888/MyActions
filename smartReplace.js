@@ -4,7 +4,7 @@ function replaceWithSecrets(content, Secrets) {
     //此处为字符串,说明是传入指定cookie信息了,仅替换cookie即可,其它的不需要替换
     if (typeof Secrets == "string") {
         if (content.indexOf("require('./jdCookie.js')") > 0) {
-            replacements.push({ key: "require('./jdCookie.js')", value: Secrets });
+            replacements.push({ key: "require('./jdCookie.js')", value: `'${Secrets}'` });
         }
         if (content.indexOf("京东多合一签到") > 0 && content.indexOf("@NobyDa") > 0) {
             replacements.push({ key: /var Key = ''/, value: `var Key = '${Secrets}'` });
@@ -21,7 +21,7 @@ function replaceWithSecrets(content, Secrets) {
         let coinToBeanCount = parseInt(Secrets.MarketCoinToBeanCount);
         if (coinToBeanCount >= 0 && coinToBeanCount <= 20 && content.indexOf("$.getdata('coinToBeans')") > 0) {
             console.log("蓝币兑换京豆操作已注入");
-            replacements.push({ key: "$.getdata('coinToBeans')", value: "" });
+            replacements.push({ key: "$.getdata('coinToBeans')", value: coinToBeanCount });
         }
     }
     if (Secrets.JoyFeedCount && !isNaN(Secrets.JoyFeedCount)) {
