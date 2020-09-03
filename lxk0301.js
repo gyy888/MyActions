@@ -1,7 +1,7 @@
 const exec = require("child_process").execSync;
 const fs = require("fs");
 const download = require("download");
-const smartReplace = require ("./smartReplace");
+const smartReplace = require("./smartReplace");
 
 // 公共变量
 const Secrets = {
