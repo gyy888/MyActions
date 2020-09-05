@@ -48,12 +48,10 @@ function batchReplace(content, replacements) {
 }
 
 async function download_notify(){
-if (Secrets.PUSH_KEY || Secrets.BARK_PUSH) {
         await download("https://github.com/lxk0301/scripts/raw/master/sendNotify.js", "./", {
             filename: "sendNotify.js",
         });
         console.log("下载通知代码完毕");
-    }
 }
 
 async function download_jdFruit(content) {
