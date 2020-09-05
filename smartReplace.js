@@ -1,3 +1,4 @@
+const download = require("download");
 async function replaceWithSecrets(content, Secrets) {
     if (!Secrets || !Secrets) return content;
     const replacements = [];
