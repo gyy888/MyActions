@@ -14,7 +14,7 @@ async function downFile() {
 
 async function changeFiele(content, cookie) {
     let newContent = await smartReplace.replaceWithSecrets(content, cookie);
-    await fs.writeFileSync("./oneByOneExecute.js", newContent, "utf8");
+    await fs.writeFileSync("./execute.js", newContent, "utf8");
 }
 
 async function executeOneByOne() {
@@ -24,7 +24,7 @@ async function executeOneByOne() {
         changeFiele(content, CookieJDs[i]);
         console.log("替换变量完毕");
         try {
-            await exec("node oneByOneExecute.js", { stdio: "inherit" });
+            await exec("node execute.js", { stdio: "inherit" });
         } catch (e) {
             console.log("执行异常:" + e);
         }
