@@ -4,9 +4,9 @@
 name: 京东萌宠
 
 on:
-  # push:
-  #     branches:
-  #         - master
+  push:
+      branches:
+          - master
   schedule:
     - cron: '5 0,4,10 * * *'
 
