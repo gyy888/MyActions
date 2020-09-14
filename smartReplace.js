@@ -46,10 +46,10 @@ async function replaceWithSecrets(content, Secrets) {
         }
     }
     if (Secrets.Unsubscribe) {
-        if(Secrets.Unsubscribe.splite(',').length != 4) {
+        if(Secrets.Unsubscribe.split(',').length != 4) {
             console.log('取关参数不正确，请参考readme中的提示填入，记得用英文逗号,隔开');
         } else {
-            let usinfo = Secrets.Unsubscribe.splite(',');
+            let usinfo = Secrets.Unsubscribe.split(',');
             replacements.push({ key: "$.getdata('jdUnsubscribePageSize')", value: isNaN(usinfo[0]) ? 0 : usinfo[0] });
             replacements.push({ key: "$.getdata('jdUnsubscribeShopPageSize')", value: isNaN(usinfo[1]) ? 50 : usinfo[1] });
             replacements.push({ key: "$.getdata('jdUnsubscribeStopGoods')", value: `'${usinfo[2]}'` });
