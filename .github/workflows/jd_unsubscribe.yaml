@@ -3,29 +3,28 @@
 
 name: 京东取关店铺
 
-on:
-  schedule:
-    - cron: '45 15 * * *'
+on: 
+    workflow_dispatch:
+    schedule:
+        - cron: "45 15 * * *"
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js 10.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: 10.x
-      - name: npm install
-        run: |
-          npm install
-      - name: '运行 【京东取关店铺】'
-        run: |
-          node onlyOneExecute.js
-        env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
-          SYNCURL: https://github.com/lxk0301/scripts/raw/master/jd_unsubscribe.js
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v1
+            - name: Use Node.js 10.x
+              uses: actions/setup-node@v1
+              with:
+                  node-version: 10.x
+            - name: npm install
+              run: |
+                  npm install
+            - name: "运行 【京东取关店铺】"
+              run: |
+                  node onlyOneExecute.js
+              env:
+                  JD_COOKIE: ${{ secrets.JD_COOKIE }}
+                  PUSH_KEY: ${{ secrets.PUSH_KEY }}
+                  BARK_PUSH: ${{ secrets.BARK_PUSH }}
+                  SYNCURL: https://github.com/lxk0301/scripts/raw/master/jd_unsubscribe.js

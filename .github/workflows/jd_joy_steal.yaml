@@ -4,28 +4,27 @@
 name: 京东宠汪汪偷好友狗粮和积分
 
 on:
-  schedule:
-    - cron: '0,30 16,21,22 * * *'
+    workflow_dispatch:
+    schedule:
+        - cron: "0,30 16,21,22 * * *"
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js 10.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: 10.x
-    - name: npm install
-      run: |
-        npm install
-    - name: '运行 【宠汪汪偷好友狗粮与积分】'
-      run: |
-        node onlyOneExecute.js
-      env:
-        JD_COOKIE: ${{ secrets.JD_COOKIE }}
-        PUSH_KEY: ${{ secrets.PUSH_KEY }}
-        BARK_PUSH: ${{ secrets.BARK_PUSH }}
-        SYNCURL: https://github.com/lxk0301/scripts/raw/master/jd_joy_steal.js
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v1
+            - name: Use Node.js 10.x
+              uses: actions/setup-node@v1
+              with:
+                  node-version: 10.x
+            - name: npm install
+              run: |
+                  npm install
+            - name: "运行 【宠汪汪偷好友狗粮与积分】"
+              run: |
+                  node onlyOneExecute.js
+              env:
+                  JD_COOKIE: ${{ secrets.JD_COOKIE }}
+                  PUSH_KEY: ${{ secrets.PUSH_KEY }}
+                  BARK_PUSH: ${{ secrets.BARK_PUSH }}
+                  SYNCURL: https://github.com/lxk0301/scripts/raw/master/jd_joy_steal.js
