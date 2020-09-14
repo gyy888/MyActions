@@ -52,8 +52,8 @@ async function replaceWithSecrets(content, Secrets) {
             let usinfo = Secrets.Unsubscribe.splite(',');
             replacements.push({ key: "$.getdata('jdUnsubscribePageSize')", value: isNaN(usinfo[0]) ? 0 : usinfo[0] });
             replacements.push({ key: "$.getdata('jdUnsubscribeShopPageSize')", value: isNaN(usinfo[1]) ? 50 : usinfo[1] });
-            replacements.push({ key: "$.getdata('jdUnsubscribeStopGoods')", value: $"'{usinfo[2]}'"  });
-            replacements.push({ key: "$.getdata('jdUnsubscribeStopShop')", value: $"'{usinfo[3]}'" });
+            replacements.push({ key: "$.getdata('jdUnsubscribeStopGoods')", value: `'${usinfo[2]}'` });
+            replacements.push({ key: "$.getdata('jdUnsubscribeStopShop')", value: `'${usinfo[3]}'` });
         }
     }
     return batchReplace(content, replacements);
