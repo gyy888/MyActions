@@ -75,7 +75,7 @@ async function init_notify(Secrets, content, replacements) {
             });
             replacements.push({
                 key: "if (isNode) console.log(`${title}\n${subtitle}\n${message}`)",
-                value: `if (isNode) lxk0301Notify.sendNotify(title , subtitle == '' ? subt nmitle : (subtitle+'\n') + message)`,
+                value: `if (isNode) {console.log("开始通知");lxk0301Notify.sendNotify(title , subtitle == '' ? '' : (subtitle+'\n') + message);console.log("通知完毕");}`,
             });
         }
     }
