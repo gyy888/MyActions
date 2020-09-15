@@ -32,7 +32,7 @@ async function replaceWithSecrets(content, Secrets) {
             });
             replacements.push({
                 key: "if (isNode) console.log(`${title}\n${subtitle}\n${message}`)",
-                value: `if (isNode) sendNotify(title , subtitle == '' ? subtitle : (subtitle+'\n') + message)`,
+                value: `if (isNode) notify.sendNotify(title , subtitle == '' ? subt nmitle : (subtitle+'\n') + message)`,
             });
         }
     }
