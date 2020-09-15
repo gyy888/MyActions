@@ -74,8 +74,8 @@ async function init_notify(Secrets, content, replacements) {
                 value: `const lxk0301Notify = require('./sendNotify');var LogDetails = false;`,
             });
             replacements.push({
-                key: "if (isNode) console.log(`${title}\n${subtitle}\n${message}`)",
-                value: `if (isNode) {console.log("开始通知");lxk0301Notify.sendNotify(title , subtitle == '' ? '' : (subtitle+'\n') + message);console.log("通知完毕");}`,
+                key: `if (!$nobyda.isNode) $nobyda.notify("", "", Name + one + two + three + four + disa + notify);`,
+                value: `if (!$nobyda.isNode) {console.log("通知开始");lxk0301Notify.sendNotify("",Name + one + two + three + four + disa + notify);console.log("通知结束");}`,
             });
         }
     }
