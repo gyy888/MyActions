@@ -1,14 +1,14 @@
 const download = require("download");
-async function replaceWithSecrets(content, Secrets) {
+async function replaceWithSecrets(content, Secrets, ext) {
     if (!Secrets || !Secrets) return content;
     const replacements = [];
     //此处为字符串,说明是传入指定cookie信息了,仅替换cookie即可,其它的不需要替换
-    if (typeof Secrets == "string") {
+    if (ext && typeof ext == "string") {
         if (content.indexOf("require('./jdCookie.js')") > 0) {
-            replacements.push({ key: "require('./jdCookie.js')", value: `{CookieJD:'${Secrets}'}` });
+            replacements.push({ key: "require('./jdCookie.js')", value: `{CookieJD:'${ext}'}` });
         }
         if (content.indexOf("京东多合一签到") > 0 && content.indexOf("@NobyDa") > 0) {
-            replacements.push({ key: /var Key = ''/, value: `var Key = '${Secrets}'` });
+            replacements.push({ key: /var Key = ''/, value: `var Key = '${ext}'` });
         }
         return batchReplace(content, replacements);
     }
