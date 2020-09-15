@@ -71,11 +71,11 @@ async function init_notify(Secrets, content, replacements) {
             console.log("京东多合一签到通知注入成功");
             replacements.push({
                 key: "var LogDetails = false;",
-                value: `const notify = require('./sendNotify');var LogDetails = false;`,
+                value: `const lxk0301Notify = require('./sendNotify');var LogDetails = false;`,
             });
             replacements.push({
                 key: "if (isNode) console.log(`${title}\n${subtitle}\n${message}`)",
-                value: `if (isNode) notify.sendNotify(title , subtitle == '' ? subt nmitle : (subtitle+'\n') + message)`,
+                value: `if (isNode) lxk0301Notify.sendNotify(title , subtitle == '' ? subt nmitle : (subtitle+'\n') + message)`,
             });
         }
     }
