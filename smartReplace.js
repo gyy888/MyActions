@@ -75,7 +75,7 @@ async function init_notify(Secrets, content, replacements) {
             });
             replacements.push({
                 key: `if (!$nobyda.isNode) $nobyda.notify("", "", Name + one + two + three + four + disa + notify);`,
-                value: `if (!$nobyda.isNode) {console.log("通知开始");lxk0301Notify.sendNotify("",Name + one + two + three + four + disa + notify);console.log("通知结束");}`,
+                value: `console.log("通知开始");lxk0301Notify.sendNotify("",Name + one + two + three + four + disa + notify);console.log("通知结束");`,
             });
         }
     }
