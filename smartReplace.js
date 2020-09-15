@@ -75,7 +75,7 @@ async function init_notify(Secrets, content, replacements) {
             });
             replacements.push({
                 key: `if (!$nobyda.isNode) $nobyda.notify("", "", Name + one + two + three + four + disa + notify);`,
-                value: `console.log("通知开始");\n var accountName='';\n try{accountName = match(/pt_pin=(.+?);/)[1];}catch(e){}\n lxk0301Notify.sendNotify("京东多合一签到",accountName+'\n' + one + two + three + four + disa + notify);\n console.log("通知结束");`,
+                value: `console.log("通知开始");\n var accountName='';\n try{accountName = match(/pt_pin=(.+?);/)[1];}catch(e){}\n lxk0301Notify.sendNotify("京东多合一签到",accountName + "\\n " + one + two + three + notify);\n console.log("通知结束");`,
             });
         }
     }
