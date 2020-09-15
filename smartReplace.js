@@ -28,11 +28,11 @@ async function replaceWithSecrets(content, Secrets) {
         if (content.indexOf("京东多合一签到") > 0 && content.indexOf("@NobyDa") > 0) {
             replacements.push({
                 key: "var LogDetails = false;",
-                value: ```require('./sendNotify');var LogDetails = false;```,
+                value: `const notify = require('./sendNotify');var LogDetails = false;`,
             });
             replacements.push({
                 key: "if (isNode) console.log(`${title}\n${subtitle}\n${message}`)",
-                value: `if (isNode) sendNotify(title , subtitle == ''? subtitle : (subtitle+'\n') + message)`,
+                value: `if (isNode) sendNotify(title , subtitle == '' ? subtitle : (subtitle+'\n') + message)`,
             });
         }
     }
