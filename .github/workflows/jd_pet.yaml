@@ -6,8 +6,10 @@ name: 京东萌宠
 on:
     workflow_dispatch:
     schedule:
-        - cron: "5 0,4,10 * * *"
-
+        - cron: "40 0,4,10 * * *"
+    watch:
+        types: [started]
+        
 jobs:
     build:
         runs-on: ubuntu-latest

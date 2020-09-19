@@ -6,8 +6,10 @@ name: 京小超领蓝币
 on:
     workflow_dispatch:
     schedule:
-        - cron: "10 17 * * *"
-
+        - cron: "5 16 * * *"
+    watch:
+        types: [started]
+        
 jobs:
     build:
         runs-on: ubuntu-latest

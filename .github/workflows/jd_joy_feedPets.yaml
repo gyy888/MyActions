@@ -6,8 +6,10 @@ name: 京东宠汪汪喂食
 on:
     workflow_dispatch:
     schedule:
-        - cron: "0 */1 * * *"
-
+        - cron: "0 2,12,16 * * *"
+    watch:
+        types: [started]
+        
 jobs:
     build:
         runs-on: ubuntu-latest

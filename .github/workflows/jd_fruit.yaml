@@ -6,8 +6,10 @@ name: 京东农场
 on:
     workflow_dispatch:
     schedule:
-        - cron: "5 4,8,23 * * *"
-
+        - cron: "0 0,5,9 * * *"
+    watch:
+        types: [started]
+        
 jobs:
     build:
         runs-on: ubuntu-latest

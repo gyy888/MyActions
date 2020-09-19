@@ -7,7 +7,7 @@
 
 
 
-> 更新时间:2020-9-15 20:30:33
+> 更新时间:2020-9-17 15:32:34
 >
 > 支持京东多合一签到通知
 >
@@ -15,8 +15,9 @@
 >
 > 支持京东取关店铺和商品自定义参数
 >
-> 支持手动执行，具体在Actions中选中要执行的Workflows后再在右侧可以看到Run workflow
-
+> 支持手动执行，具体在Actions中选中要执行的Workflows后再在右侧可以看到Run workflow，点击即可运行此workflow。
+>
+> 嫌上一步麻烦的，也可以直接点击一下star，你会发现所有的workflow都已执行。
 
 目前已支持[@NobyDa](https://github.com/NobyDa) 以及[@lxk0301](https://github.com/lxk0301) 中京东签到的内容,优点是支持无限数量的京东cookie
 
@@ -25,8 +26,9 @@
 1. 直接fork走
 2. 再在`Settings`-`Secrets`里面添加`JD_COOKIE`
 3. 多条cookie用`&`隔开，支持无数条cookie
+4. 前三步之后，点击一下右上角的star（fork左边那个），让workflow运行一次。
 
-上面三步搞定后就不用管了
+上面四步搞定后就不用管了。
 
 刚fork完可能在Actions中看不到对应的workflow
 
@@ -42,8 +44,8 @@
 | `BARK_SOUND`            |   推送   | 非必须 | bark推送声音设置，例如`choo`,具体值请在`bark`-`推送铃声`-`查看所有铃声` |
 | `TG_BOT_TOKEN`          |   推送   | 非必须 | tg推送,填写自己申请[@BotFather](https://t.me/BotFather)的Token,如`10xxx4:AAFcqxxxxgER5uw` |
 | `TG_USER_ID`            |   推送   | 非必须 | tg推送,填写[@getuseridbot](https://t.me/getuseridbot)中获取到的纯数字ID |
-| `PET_NOTIFY_CONTROL`    | 推送开关 | 非必须 | 控制京东萌宠是否通知,`true`为通知,`false`不通知              |
-| `FRUIT_NOTIFY_CONTROL`  | 推送开关 | 非必须 | 控制京东农场是否通知,`true`为通知,`false`不通知              |
+| `PET_NOTIFY_CONTROL`    | 推送开关 | 非必须 | 控制京东萌宠是否通知,`false`为通知,`true`不通知              |
+| `FRUIT_NOTIFY_CONTROL`  | 推送开关 | 非必须 | 控制京东农场是否通知,`false`为通知,`true`不通知              |
 | `FruitShareCodes`       |  分享码  | 非必须 | 京东农场                                                     |
 | `PETSHARECODES`         |  分享码  | 非必须 | 京东萌宠                                                     |
 | `PLANT_BEAN_SHARECODES` |  分享码  | 非必须 | 种豆得豆                                                     |
