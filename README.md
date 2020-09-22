@@ -1,23 +1,24 @@
-![sazs34’s github stats](https://github-readme-stats.vercel.app/api?username=sazs34&show_icons=true&theme=merko)
+![sazs34’s github stats](https://github-readme-stats.vercel.app/api?username=sazs34&show_icons=true&theme=vue)
 
 # MyActions
-自己用来签到的东东,不支持售后
+
+### 本项目已可以实现自动同步上游更改！[具体点击](#自动同步)
 
 目前[@lxk0301](https://github.com/lxk0301) 的代码都支持无限账号了，各位可以直接使用那边的了呢
 
-
-
-> 更新时间:2020-9-17 15:32:34
+> 更新时间:2020-9-22 10:05:30
 >
-> 支持京东多合一签到通知
+> **添加京东手机狂欢城签到**
 >
-> 支持TG-Bot通知
+> 添加自动同步上游代码
+>
+> 支持京东多合一签到通知 + TG-Bot通知
 >
 > 支持京东取关店铺和商品自定义参数
->
-> 支持手动执行，具体在Actions中选中要执行的Workflows后再在右侧可以看到Run workflow，点击即可运行此workflow。
->
-> 嫌上一步麻烦的，也可以直接点击一下star，你会发现所有的workflow都已执行。
+
+支持手动执行，具体在Actions中选中要执行的Workflows后再在右侧可以看到Run workflow，点击即可运行此workflow。
+
+嫌上一步麻烦的，也可以直接点击一下star，你会发现所有的workflow都已执行。
 
 目前已支持[@NobyDa](https://github.com/NobyDa) 以及[@lxk0301](https://github.com/lxk0301) 中京东签到的内容,优点是支持无限数量的京东cookie
 
@@ -105,9 +106,26 @@ pt_pin=***;
 pt_key=****;pt_pin=***;&pt_key=****;pt_pin=***;
 ```
 
-### fork后如何同步代码
+### 同步Fork后的代码
+
+#### 手动同步
 
 [手动同步 http://www.ibloger.net/article/3361.html](http://www.ibloger.net/article/3361.html)
 
-[自动同步 http://note.youdao.com/noteshare?id=6cd72de428957d593c129749194b4352](http://note.youdao.com/noteshare?id=6cd72de428957d593c129749194b4352)
+#### 自动同步
 
+##### 方案A - 强制远程分支覆盖自己的分支
+1. 参考[这里](http://note.youdao.com/noteshare?id=6cd72de428957d593c129749194b4352)，安装[pull插件](https://github.com/apps/pull)，并确认此项目已在pull插件的作用下（参考文中1-d）。
+2. 确保.github/pull.yml文件正常存在，yml内上游作者填写正确(此项目已填好，无需更改)。
+3. 确保pull.yml里面是`mergeMethod: hardreset`(默认就是hardreset)。
+4. ENJOY!上游更改三小时左右就会自动发起同步。
+
+##### 方案B - 保留自己分支的修改
+
+> 上游变动后pull插件会自动发起pr，但如果有冲突需要自行**手动**确认。
+> 如果上游更新涉及workflow里的文件内容改动，需要自行**手动**确认。
+
+1. 参考[这里](http://note.youdao.com/noteshare?id=6cd72de428957d593c129749194b4352)，安装[pull插件](https://github.com/apps/pull)，并确认此项目已在pull插件的作用下（参考文中1-d）。
+2. 确保.github/pull.yml文件正常存在，yml内上游作者填写正确(此项目已填好，无需更改)。
+3. 将pull.yml里面的`mergeMethod: hardreset`修改为`mergeMethod: merge`保存。
+4. ENJOY!上游更改三小时左右就会自动发起同步。
