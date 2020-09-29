@@ -9,7 +9,7 @@ on:
         - cron: "10 */4 * * *"
     watch:
         types: [started]
-        
+
 jobs:
     build:
         runs-on: ubuntu-latest
