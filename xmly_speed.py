@@ -25,8 +25,8 @@ def run():
             if len(rewriteAgent) ==0 or rewriteAgent.strip()=='':
                 rewriteAgent='UserAgent = "ting_1.8.30(Redmi+7,Android28)"'
                 executeContent = re.sub(agentPattern,rewriteAgent,executeContent)
-        writeFile(executeContent,'execute'+idx+'.py')
-        os.system('python ./'+'execute'+idx+'.py')
+        writeFile(executeContent,'execute'+str(idx)+'.py')
+        os.system('python ./'+'execute'+str(idx)+'.py')
     print("\n***************************\n文件全部执行完毕")
 
 run()
