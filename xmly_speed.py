@@ -15,7 +15,7 @@ print("\n文件同步完毕, 处理中...")
 xmly_speed_cookie = os.environ["XMLY_SPEED_COOKIE"]
 agentPattern = re.compile(r'UserAgent = \"[\d\D]+\"')
 for line in xmly_speed_cookie.split('\n'):
-    executeContent = webFileContent.replace('xmly_speed_cookie = os.environ["XMLY_SPEED_COOKIE"]','xmly_speed_cookie = "%cookie"' % (line),1)
+    executeContent = webFileContent.replace('xmly_speed_cookie = os.environ["XMLY_SPEED_COOKIE"]','xmly_speed_cookie = "' + line + '"',1)
     if line.find("_device=android")>0:#此时表示是获取的安卓的cookie,需要使用安卓的agent
         rewriteAgent = os.environ["XMLY_ANDROID_AGENT"]
         if len(rewriteAgent) ==0 or rewriteAgent.strip()=='':
