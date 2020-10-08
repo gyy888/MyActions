@@ -28,5 +28,6 @@ def run():
         writeFile(executeContent,'execute'+str(idx)+'.py')
         os.system('python ./'+'execute'+str(idx)+'.py')
     print("\n***************************\n文件全部执行完毕")
+    exit(0) 
 
 run()
