@@ -13,8 +13,11 @@ print("\n同步文件中...")
 webFileContent = loadFileContent(os.environ["SYNCURL"])
 print("\n文件同步完毕, 处理中...")
 xmly_speed_cookie = os.environ["XMLY_SPEED_COOKIE"]
+if len(xmly_speed_cookie)==0 or xmly_speed_cookie.strip()=='':
+    print("无法获取Cookie,请在Secrets中配置XMLY_SPEED_COOKIE");
+    return;
 agentPattern = re.compile('UserAgent = \"[\d\D]+\"')
-for idx,xmlyCookie in xmly_speed_cookie.split('\n'):
+for idx,xmlyCookie in enumerate(xmly_speed_cookie.split('\n')):
     executeContent = webFileContent.replace('xmly_speed_cookie = os.environ["XMLY_SPEED_COOKIE"]','xmly_speed_cookie = "' + xmlyCookie + '"',1)
     if xmlyCookie.find("_device=android") > 0:#此时表示是获取的安卓的cookie,需要使用安卓的agent
         rewriteAgent = os.environ["XMLY_ANDROID_AGENT"]
