@@ -1,4 +1,4 @@
-name: 喜马拉雅极速定制版
+name: 喜马拉雅极速测试版
 
 on:
     workflow_dispatch:
