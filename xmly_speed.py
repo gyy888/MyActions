@@ -17,11 +17,10 @@ agentPattern = re.compile(r'UserAgent = \"[\d\D]+\"')
 for line in xmly_speed_cookie.split('\n'):
     executeContent = webFileContent.replace('xmly_speed_cookie = os.environ["XMLY_SPEED_COOKIE"]','xmly_speed_cookie = "%cookie"' % (line),1)
     if line.find("_device=android")>0:#此时表示是获取的安卓的cookie,需要使用安卓的agent
-        global executeContent
         rewriteAgent = os.environ["XMLY_ANDROID_AGENT"]
         if len(rewriteAgent) ==0 or rewriteAgent.strip()=='':
             rewriteAgent='UserAgent = "ting_1.8.30(Redmi+7,Android28)"'
-        executeContent = re.sub(agentPattern,rewriteAgent,executeContent)
+            executeContent = re.sub(agentPattern,rewriteAgent,executeContent)
     writeFile(executeContent)
     print("\n文件处理安卓Agent完毕，执行中...")
     os.system('python ./execute.py')
