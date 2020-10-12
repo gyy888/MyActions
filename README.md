@@ -58,6 +58,8 @@ FORK后，如果actions没有定时执行，请随便找个文件，加个空格
 | `JDJoyFeedCount`        |   喂食   | 非必须 | 宠汪汪喂食数量，默认10，请填写[10,20,40,80]其中任意一个      |
 | `UNSUBSCRIBE`           |   取关   | 非必须 | 京东取关店铺和商品，[具体使用往下看](#取关店铺参数的说明)    |
 | `XMLY_SPEED_COOKIE`     | 喜马拉雅 | 非必须 | [Cookie获取请参考](https://github.com/Zero-S1/xmly_speed/blob/master/xmly_speed.md),仅支持git actions执行,多个Cookie用换行即可 |
+| `SUPERMARKET_UPGRADE`   |  京小超自动升级  | 非必须 | 自动升级,顺序:解锁升级商品、升级货架,true表示自动升级,false表示关闭自动升级 |
+| `BUSINESS_CIRCLE_JUMP`  |  京小超自动更换商圈  | 非必须 | 小于对方300热力值自动更换商圈队伍,true表示运行,false表示禁止 |
 
 #### 关于分享码的说明:
 
