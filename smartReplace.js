@@ -15,20 +15,6 @@ async function replaceWithSecrets(content, Secrets, ext) {
             replacements.push({ key: "require('./jdCookie.js')", value: JSON.stringify(Secrets.JD_COOKIE.split("&")) });
         }
         await downloader(content);
-        if (Secrets.MarketCoinToBeanCount && !isNaN(Secrets.MarketCoinToBeanCount)) {
-            let coinToBeanCount = parseInt(Secrets.MarketCoinToBeanCount);
-            if (coinToBeanCount >= 0 && coinToBeanCount <= 20 && content.indexOf("$.getdata('coinToBeans')") > 0) {
-                console.log("蓝币兑换京豆操作已注入");
-                replacements.push({ key: "$.getdata('coinToBeans')", value: coinToBeanCount });
-            }
-        }
-        if (Secrets.JoyFeedCount && !isNaN(Secrets.JoyFeedCount)) {
-            let feedCount = parseInt(Secrets.JoyFeedCount);
-            if ([10, 20, 40, 80].indexOf(feedCount) >= 0 && content.indexOf("$.getdata('joyFeedCount')") > 0) {
-                console.log("宠汪汪喂食操作已注入");
-                replacements.push({ key: "$.getdata('joyFeedCount')", value: feedCount });
-            }
-        }
         if (Secrets.Unsubscribe) {
             if (Secrets.Unsubscribe.split(",").length != 4) {
                 console.log("取关参数不正确，请参考readme中的提示填入，记得用英文逗号,隔开");
