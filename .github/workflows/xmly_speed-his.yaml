@@ -1,4 +1,4 @@
-name: 喜马拉雅极速测试版
+name: 喜马拉雅极速历史版
 
 on:
     workflow_dispatch:
@@ -22,7 +22,7 @@ jobs:
             - name: "安装依赖包"
               run: pip install -r ./requirements.txt
 
-            - name: "运行 喜马拉雅极速版"
+            - name: "运行 喜马拉雅极速历史版"
               run: python3 xmly_speed.py
               env:
                   XMLY_SPEED_COOKIE: ${{ secrets.XMLY_SPEED_COOKIE }}
