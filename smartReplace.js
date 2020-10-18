@@ -15,6 +15,20 @@ async function replaceWithSecrets(content, Secrets, ext) {
             replacements.push({ key: "require('./jdCookie.js')", value: JSON.stringify(Secrets.JD_COOKIE.split("&")) });
         }
         await downloader(content);
+        if (Secrets.MarketCoinToBeanCount && !isNaN(Secrets.MarketCoinToBeanCount)) {
+            let coinToBeanCount = parseInt(Secrets.MarketCoinToBeanCount);
+            if (coinToBeanCount >= 0 && coinToBeanCount <= 20 && content.indexOf("$.getdata('coinToBeans')") > 0) {
+                console.log("蓝币兑换京豆操作已注入");
+                replacements.push({ key: "$.getdata('coinToBeans')", value: coinToBeanCount });
+            }
+        }
+        if (Secrets.JoyFeedCount && !isNaN(Secrets.JoyFeedCount)) {
+            let feedCount = parseInt(Secrets.JoyFeedCount);
+            if ([10, 20, 40, 80].indexOf(feedCount) >= 0 && content.indexOf("$.getdata('joyFeedCount')") > 0) {
+                console.log("宠汪汪喂食操作已注入");
+                replacements.push({ key: "$.getdata('joyFeedCount')", value: feedCount });
+            }
+        }
         if (Secrets.Unsubscribe) {
             if (Secrets.Unsubscribe.split(",").length != 4) {
                 console.log("取关参数不正确，请参考readme中的提示填入，记得用英文逗号,隔开");
@@ -76,6 +90,9 @@ async function downloader(content) {
     if (content.indexOf("jdPlantBeanShareCodes") > 0) {
         await download_jdPlant();
     }
+    if (content.indexOf("jdSuperMarketShareCodes") > 0) {
+        await download_jdMarket();
+    }
 }
 
 async function download_notify() {
@@ -101,6 +118,12 @@ async function download_jdPlant(content) {
         filename: "jdPlantBeanShareCodes.js",
     });
     console.log("下载种豆得豆分享码代码完毕");
+}
+async function download_jdMarket(content) {
+    await download("https://raw.githubusercontent.com/lxk0301/scripts/master/jdSuperMarketShareCodes.js", "./", {
+        filename: "jdSuperMarketShareCodes.js",
+    });
+    console.log("下载京小超分享码代码完毕");
 }
 
 module.exports = {
