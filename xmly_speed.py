@@ -36,7 +36,7 @@ def run():
                 print("无需禁用")
             if index>=0:
                 executeContent = executeContent.replace("XMLY_ACCUMULATE_TIME = 1","XMLY_ACCUMULATE_TIME = 0",1).replace("action 自动刷时长打开","action 自动刷时长被指定关闭",1)
-                print("已接受XMLY_ACCUMULATE_INDEX配置,为索引"+idx+"的数据执行了禁用刷新时长的操作")
+                print("已接受XMLY_ACCUMULATE_INDEX配置,为索引"+str(idx)+"的数据执行了禁用刷新时长的操作")
         writeFile(executeContent,'execute'+str(idx)+'.py')
         os.system('python ./'+'execute'+str(idx)+'.py')
     print("\n***************************\n文件全部执行完毕")
