@@ -16,7 +16,7 @@ def run():
     xmly_speed_cookie = os.environ["XMLY_SPEED_COOKIE"]
     xmly_accumulate_index=[]
     if not os.environ["XMLY_ACCUMULATE_INDEX"].strip()=='':
-       xmly_accumulate_index = list(map(int, os.environ["XMLY_ACCUMULATE_INDEX"].split(",","")))
+       xmly_accumulate_index = [int(i) for i in os.environ["XMLY_ACCUMULATE_INDEX"].split(",","")]
     if len(xmly_speed_cookie)==0 or xmly_speed_cookie.strip()=='':
         print("无法获取Cookie,请在Secrets中配置XMLY_SPEED_COOKIE")
         return
