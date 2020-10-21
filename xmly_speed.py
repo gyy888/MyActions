@@ -13,6 +13,12 @@ def writeFile(content,fileName):
     file = './'+fileName
     with open(file, 'w', encoding='utf-8') as f: f.write(content.replace('\r\n','\n'))
 
+def safe_cast(val, to_type, default=None):
+    try:
+        return to_type(val)
+    except (ValueError, TypeError):
+        return default
+
 def readSecret(key):
     if key in os.environ and not os.environ[key].strip()=='':
         return os.environ[key]
@@ -21,11 +27,12 @@ def readSecret(key):
     
 def isOver():
     hourLimit = readSecret("XMLY_ACCUMULATE_HOURS")
-    if not hourLimit is None and int(hourLimit)>0:
+    print("HOURS:"+safe_cast(hourLimit,int,0))
+    if not hourLimit is None and safe_cast(hourLimit,int,0) > 0:
         date_stamp = (int(time.time())-57600) % 86400
         print(datetime.now(tz=tz.gettz('Asia/Shanghai')).strftime("%Y-%m-%d %H:%M:%S", ))
         print("今日已过秒数: ", date_stamp)
-        if date_stamp>int(hourLimit)*60*60:
+        if date_stamp > int(hourLimit) * 60 * 60:
             return True
         else:
             return False
