@@ -57,7 +57,6 @@ def run():
     print("\n文件同步完毕, 处理中...")
     agentPattern = re.compile(r'UserAgent = \"[\d\D]*?\"',re.S)
 
-
     rewriteAgent = readSecret("XMLY_ANDROID_AGENT")
     if rewriteAgent is None:
         rewriteAgent = 'UserAgent = "ting_1.8.30(Redmi+7,Android28)"'
@@ -66,6 +65,9 @@ def run():
         executeContent = webFileContent.replace('xmly_speed_cookie = os.environ["XMLY_SPEED_COOKIE"]','xmly_speed_cookie = "' + xmlyCookie + '"',1)
         if xmlyCookie.find("_device=android") > 0:#此时表示是获取的安卓的cookie,需要使用安卓的agent
             executeContent = re.sub(agentPattern,rewriteAgent,executeContent)
+        if isOver():
+            executeContent = executeContent.replace("XMLY_ACCUMULATE_TIME = 1","XMLY_ACCUMULATE_TIME = 0",1).replace("action 自动刷时长打开","action 自动刷时长2指定关闭",1)
+            print("已接受XMLY_ACCUMULATE_HOURS配置,为索引"+str(idx)+"的数据执行了禁用刷新时长的操作")
         if isJumpIndex(idx+1):
             executeContent = executeContent.replace("XMLY_ACCUMULATE_TIME = 1","XMLY_ACCUMULATE_TIME = 0",1).replace("action 自动刷时长打开","action 自动刷时长被指定关闭",1)
             print("已接受XMLY_ACCUMULATE_INDEX配置,为索引"+str(idx)+"的数据执行了禁用刷新时长的操作")
