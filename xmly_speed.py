@@ -21,7 +21,7 @@ def readSecret(key):
     
 def isOver():
     hourLimit = readSecret("XMLY_ACCUMULATE_HOURS")
-    if not hourLimit and int(hourLimit)>0:
+    if not hourLimit is None and int(hourLimit)>0:
         date_stamp = (int(time.time())-57600) % 86400
         print(datetime.now(tz=tz.gettz('Asia/Shanghai')).strftime("%Y-%m-%d %H:%M:%S", ))
         print("今日已过秒数: ", date_stamp)
