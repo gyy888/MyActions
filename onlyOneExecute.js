@@ -18,6 +18,9 @@ const Secrets = {
 };
 
 async function downFile() {
+    const response = await axios.get(Secrets.SyncUrl);
+    console.log(response);
+    console.log(response.data);
     await download(Secrets.SyncUrl, "./", { filename: "temp.js" });
     console.log("下载代码完毕");
 }
