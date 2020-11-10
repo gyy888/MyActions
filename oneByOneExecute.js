@@ -18,7 +18,6 @@ async function downFile() {
     let response = await axios.get(Secrets.SyncUrl);
     let content = response.data;
     await fs.writeFileSync("./temp.js", content, "utf8");
-    // await download(Secrets.SyncUrl, "./", { filename: "temp.js" });
 }
 
 async function changeFiele(content, cookie) {
