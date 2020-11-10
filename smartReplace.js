@@ -13,7 +13,7 @@ async function replaceWithSecrets(content, Secrets, ext) {
         }
     } else {
         if (Secrets.JD_COOKIE && content.indexOf("require('./jdCookie.js')") > 0) {
-            download_jdcookie();
+            await download_jdcookie();
             //replacements.push({ key: "require('./jdCookie.js')", value: JSON.stringify(Secrets.JD_COOKIE.split("&")) });
         }
         await downloader(content);
