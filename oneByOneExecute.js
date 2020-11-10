@@ -1,6 +1,6 @@
 const exec = require("child_process").execSync;
 const fs = require("fs");
-const download = require("download");
+const axios = require("axios");
 const smartReplace = require("./smartReplace");
 
 // 公共变量
@@ -15,7 +15,10 @@ const Secrets = {
 let CookieJDs = [];
 
 async function downFile() {
-    await download(Secrets.SyncUrl, "./", { filename: "temp.js" });
+    let response = await axios.get(Secrets.SyncUrl);
+    let content = response.data;
+    await fs.writeFileSync("./temp.js", content, "utf8");
+    // await download(Secrets.SyncUrl, "./", { filename: "temp.js" });
 }
 
 async function changeFiele(content, cookie) {

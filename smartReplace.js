@@ -1,4 +1,4 @@
-const download = require("download");
+const axios = require("axios");
 async function replaceWithSecrets(content, Secrets, ext) {
     if (!Secrets || !Secrets) return content;
     const replacements = [];
@@ -96,33 +96,33 @@ async function downloader(content) {
 }
 
 async function download_notify() {
-    await download("https://github.com/lxk0301/scripts/raw/master/sendNotify.js", "./", {
-        filename: "sendNotify.js",
-    });
+    let response = await axios.get("https://gitee.com/lxk0301/scripts/raw/master/sendNotify.js");
+    let content = response.data;
+    await fs.writeFileSync("./sendNotify.js", content, "utf8");
     console.log("下载通知代码完毕");
 }
 async function download_jdFruit(content) {
-    await download("https://github.com/lxk0301/scripts/raw/master/jdFruitShareCodes.js", "./", {
-        filename: "jdFruitShareCodes.js",
-    });
+    let response = await axios.get("https://gitee.com/lxk0301/scripts/raw/master/jdFruitShareCodes.js");
+    let content = response.data;
+    await fs.writeFileSync("./jdFruitShareCodes.js", content, "utf8");
     console.log("下载农场分享码代码完毕");
 }
 async function download_jdPet(content) {
-    await download("https://raw.githubusercontent.com/lxk0301/scripts/master/jdPetShareCodes.js", "./", {
-        filename: "jdPetShareCodes.js",
-    });
+    let response = await axios.get("https://gitee.com/lxk0301/scripts/raw/master/jdPetShareCodes.js");
+    let content = response.data;
+    await fs.writeFileSync("./jdPetShareCodes.js", content, "utf8");
     console.log("下载萌宠分享码代码完毕");
 }
 async function download_jdPlant(content) {
-    await download("https://raw.githubusercontent.com/lxk0301/scripts/master/jdPlantBeanShareCodes.js", "./", {
-        filename: "jdPlantBeanShareCodes.js",
-    });
+    let response = await axios.get("https://gitee.com/lxk0301/scripts/raw/master/jdPlantBeanShareCodes.js");
+    let content = response.data;
+    await fs.writeFileSync("./jdPlantBeanShareCodes.js", content, "utf8");
     console.log("下载种豆得豆分享码代码完毕");
 }
 async function download_jdMarket(content) {
-    await download("https://raw.githubusercontent.com/lxk0301/scripts/master/jdSuperMarketShareCodes.js", "./", {
-        filename: "jdSuperMarketShareCodes.js",
-    });
+    let response = await axios.get("https://gitee.com/lxk0301/scripts/raw/master/jdSuperMarketShareCodes.js");
+    let content = response.data;
+    await fs.writeFileSync("./jdSuperMarketShareCodes.js", content, "utf8");
     console.log("下载京小超分享码代码完毕");
 }
 
