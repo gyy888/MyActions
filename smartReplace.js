@@ -1,4 +1,5 @@
 const axios = require("axios");
+const fs = require("fs");
 async function replaceWithSecrets(content, Secrets, ext) {
     if (!Secrets || !Secrets) return content;
     const replacements = [];
